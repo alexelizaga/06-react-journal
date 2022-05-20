@@ -1,13 +1,36 @@
-import { getAuth, signInWithPopup } from "firebase/auth";
+import { getAuth, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "firebase/auth";
 import { googleAuthProvider } from "../../firebase/firebase-config";
 import { types } from '../../types/types';
 
 export const startLoginEmailPassword = (email, password) => {
     return (dispatch) => {
 
-        setTimeout(() => {
-            dispatch( login(123, 'Pedro') );
-        }, 3500);
+        const auth = getAuth();
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then(({user}) => {
+                dispatch( login(user.uid, user.displayName) );
+            }).catch( err => {
+                console.log(err);
+            })
+
+    }
+}
+
+export const startRegisterWithEmailPasswordName = (email, password, name) => {
+    return ( dispatch ) => {
+
+        const auth = getAuth();
+
+        createUserWithEmailAndPassword(auth, email, password)
+            .then( async({ user }) => {
+                await updateProfile(auth.currentUser, {
+                    displayName: name
+                });
+                dispatch( login(user.uid, user.displayName) );
+            }).catch( err => {
+                console.log(err);
+            })
 
     }
 }
@@ -18,16 +41,10 @@ export const startGoogleLogin = () => {
         const auth = getAuth();
 
         signInWithPopup(auth, googleAuthProvider)
-            .then((result) => {
-                // const credential = GoogleAuthProvider.credentialFromResult(result);
-                // const token = credential.accessToken;
-                const user = result.user;
+            .then(({ user }) => {
                 dispatch( login(user.uid, user.displayName) );
             }).catch((error) => {
-                // const errorCode = error.code;
-                // const errorMessage = error.message;
-                // const email = error.email;
-                // const credential = GoogleAuthProvider.credentialFromError(error);
+                console.log(error);
             });
     }
 }
