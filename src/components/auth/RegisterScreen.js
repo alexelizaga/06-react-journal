@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
 
 import { useForm } from '../../hooks/useForm';
-import { removeError, setError } from '../actions/ui';
-import { startRegisterWithEmailPasswordName } from '../actions/auth';
+import { removeError, setError } from '../../actions/ui';
+import { startRegisterWithEmailPasswordName } from '../../actions/auth';
 
 export const RegisterScreen = () => {
 
@@ -103,6 +103,7 @@ export const RegisterScreen = () => {
         <button
           type="submit"
           className="btn btn-primary btn-block mb-5"
+          disabled={ ui.loading }
         >
           Register
         </button>

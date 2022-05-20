@@ -1,15 +1,19 @@
-import { getAuth, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "firebase/auth";
-import { googleAuthProvider } from "../../firebase/firebase-config";
-import { types } from '../../types/types';
+import { getAuth, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from 'firebase/auth';
+
+import { googleAuthProvider } from '../firebase/firebase-config';
+import { types } from '../types/types';
+import { finishLoading, startLoading } from "./ui";
 
 export const startLoginEmailPassword = (email, password) => {
     return (dispatch) => {
+        dispatch( startLoading() );
 
         const auth = getAuth();
 
         signInWithEmailAndPassword(auth, email, password)
             .then(({user}) => {
                 dispatch( login(user.uid, user.displayName) );
+                dispatch( finishLoading() );
             }).catch( err => {
                 console.log(err);
             })
@@ -19,6 +23,7 @@ export const startLoginEmailPassword = (email, password) => {
 
 export const startRegisterWithEmailPasswordName = (email, password, name) => {
     return ( dispatch ) => {
+        dispatch( startLoading() );
 
         const auth = getAuth();
 
@@ -28,6 +33,7 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
                     displayName: name
                 });
                 dispatch( login(user.uid, user.displayName) );
+                dispatch( finishLoading() );
             }).catch( err => {
                 console.log(err);
             })
