@@ -58,7 +58,7 @@ export const startGoogleLogin = () => {
 }
 
 export const login = (uid, displayName) => ({
-    type: types.login,
+    type: types.authLogin,
     payload: {
         uid,
         displayName
@@ -74,5 +74,5 @@ export const startLogout = () => {
 };
 
 export const logout = () => ({
-    type: types.logout
+    type: types.authLogout
 });
