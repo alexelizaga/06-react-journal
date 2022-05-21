@@ -16,7 +16,7 @@ export const Sidebar = () => {
 
       <div className="journal__sidebar-navbar">
         <h3 className="mt-5">
-          <i class="fa-solid fa-user"></i>
+          <i className="fa-solid fa-user"></i>
           <span> {name}</span>
         </h3>
 
