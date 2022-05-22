@@ -1,8 +1,9 @@
-import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
+import { collection, addDoc, updateDoc, doc } from 'firebase/firestore';
+import Swal from 'sweetalert2';
 
-import { db } from "../firebase/firebase-config";
-import { loadNotes } from "../helpers/loadNotes";
-import { types } from "../types/types";
+import { db } from '../firebase/firebase-config';
+import { loadNotes } from '../helpers/loadNotes';
+import { types } from '../types/types';
 
 export const startNewNote = () => {
     return async ( dispatch, getState ) => {
@@ -55,5 +56,17 @@ export const startSaveNote = (note) => {
         const noteDoc = doc(db, `${uid}/journal/notes/${ note.id }`);
         await updateDoc(noteDoc, noteToFirestore);
 
+        dispatch( refreshNote(note.id, noteToFirestore) );
+        Swal.fire('Saved', note.title, 'success');
     }
 }
+
+export const refreshNote = ( id, note ) => ({
+    type: types.notesUpdated,
+    payload: {
+        id, note: {
+            id,
+            ...note
+        }
+    }
+})
