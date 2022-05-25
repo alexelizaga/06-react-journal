@@ -21,6 +21,8 @@
   background-color: $primary;
   border-radius: 2px;
 
+  transition: background-color .3 ease;
+
   &:disabled {
     background-color: $primary-light;
     cursor:not-allowed;
@@ -28,6 +30,21 @@
 
   &:hover {
     background-color: $primary-dark;
+  }
+}
+
+.btn-danger {
+  background-color: $danger;
+
+  transition: background-color .3 ease;
+
+  &:disabled {
+    background-color: $danger-light;
+    cursor:not-allowed;
+  }
+
+  &:hover {
+    background-color: $danger-dark;
   }
 }
 

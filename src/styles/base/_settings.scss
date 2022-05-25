@@ -7,6 +7,10 @@ $secondary: #5C62C5;
 $secondary-light: lighten($color: $secondary, $amount: 15);
 $secondary-dark: darken($color: $secondary, $amount: 15);
 
+$danger: #e53935;
+$danger-light: lighten($color: $danger, $amount: 15);
+$danger-dark: darken($color: $danger, $amount: 15);
+
 $dark-grey: #363636;
 $light-grey: #D8D8D8;
 
