@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@cloudinary/react": "^1.4.0",
+    "@cloudinary/url-gen": "^1.8.0",
     "@reduxjs/toolkit": "^1.8.1",
+    "cloudinary": "^1.30.0",
+    "cloudinary-core": "^2.12.3",
     "firebase": "^9.8.1",
     "moment": "^2.29.3",
     "node-sass": "^7.0.1",
