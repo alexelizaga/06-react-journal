@@ -1,19 +1,21 @@
 // Colors
 $primary: #5C62C5;
-$primary-light: lighten($color: $primary, $amount: 15);
-$primary-dark: darken($color: $primary, $amount: 15);
+$primary-light: lighten($color: $primary, $amount: 10);
+$primary-dark: darken($color: $primary, $amount: 10);
 
 $secondary: #5C62C5;
-$secondary-light: lighten($color: $secondary, $amount: 15);
-$secondary-dark: darken($color: $secondary, $amount: 15);
+$secondary-light: lighten($color: $secondary, $amount: 10);
+$secondary-dark: darken($color: $secondary, $amount: 10);
 
 $danger: #e53935;
-$danger-light: lighten($color: $danger, $amount: 15);
-$danger-dark: darken($color: $danger, $amount: 15);
+$danger-light: lighten($color: $danger, $amount: 10);
+$danger-dark: darken($color: $danger, $amount: 10);
 
 $dark-grey: #363636;
 $light-grey: #D8D8D8;
 
 $white: #fff;
 $google-blue: #4285f4;
+$google-blue-light: lighten($color: $google-blue, $amount: 10);
+$google-blue-dark: darken($color: $google-blue, $amount: 10);
 $button-active-blue: #1669f2;
