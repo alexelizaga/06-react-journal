@@ -13,10 +13,4 @@ const reducer = combineReducers({
 
 export const store = configureStore({
     reducer,
-    // middleware: getDefaultMiddleware =>
-    //     getDefaultMiddleware({
-    //         thunk: {
-    //             // extraArgument: myCustomApiService
-    //         }
-    //     })
 });

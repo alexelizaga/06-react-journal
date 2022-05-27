@@ -1,26 +1,19 @@
-export const fileUpload = async ( file ) => {
-    const cloudUrl = 'https://api.cloudinary.com/v1_1/dkywmxeek/upload';
+import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 
-    const formData = new FormData();
-    formData.append('upload_preset', 'react-journal');
-    formData.append('file', file);
+export const fileUpload = async ( file, fileName ) => {
+
+    const storage = getStorage();
+    const storageRef = ref(storage, `journal/${fileName}`);
 
     try {
-        const resp = await fetch( cloudUrl, {
-            method: 'POST',
-            body: formData
-        });
+        const uploadTask = await uploadBytes(storageRef, file);
+        const url = await getDownloadURL(uploadTask.ref);
 
-        if ( resp.ok ) {
-            const cloudResp = await resp.json();
-            return cloudResp.secure_url;
-        } else {
-            // throw await resp.json();
-            return null;
-        }
-    } catch(error) {
-        console.log(error);
-        throw error;
-    }
+        return url;
+        
+    } catch (err) {
+        console.log(err);
+        throw err;
+    } 
 
 } 

@@ -9,7 +9,8 @@ import { types } from '../types/types';
             title: '',
             body: '',
             imageUrl: '',
-            date: 1234
+            date: 1234,
+            format: '.png'
         }
     }
 */
@@ -42,6 +43,7 @@ export const notesReducer = ( state = initialState, action ) => {
         case types.notesUpdated:
             return {
                 ...state,
+                active: action.payload.note,
                 notes: state.notes.map(
                     note => note.id === action.payload.id
                         ? action.payload.note

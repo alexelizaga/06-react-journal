@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { activeNote } from '../../actions/notes';
 
-export const JournalEntry = ({ id, date, title, body, url }) => {
+export const JournalEntry = ({ id, date, title, body, url, format }) => {
   const noteDate = moment(date);
   const dispatch = useDispatch();
 
@@ -13,7 +13,7 @@ export const JournalEntry = ({ id, date, title, body, url }) => {
     console.log('EntryClick');
     dispatch (
       activeNote(id, {
-        date, title, body, url
+        date, title, body, url, format
       })
     );
   }
@@ -62,5 +62,6 @@ JournalEntry.propTypes = {
   date: PropTypes.number,
   title: PropTypes.string,
   body: PropTypes.string,
-  url: PropTypes.string
+  url: PropTypes.string,
+  format: PropTypes.string
 }

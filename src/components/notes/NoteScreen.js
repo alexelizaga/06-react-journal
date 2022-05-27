@@ -9,7 +9,7 @@ import { NotesAppBar } from './NotesAppBar';
 export const NoteScreen = () => {
     const dispatch = useDispatch();
 
-    const { active:note } = useSelector(state => state.notes);
+    const { active: note } = useSelector(state => state.notes);
     const [ formValues, handleInputChange, reset ] = useForm(note);
     const { title, body } = formValues;
 
@@ -33,7 +33,6 @@ export const NoteScreen = () => {
         dispatch( startDeleting(activeId.current) );
     }
     
-
     return (
         <div className="notes__main-content">
             <NotesAppBar />
